@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- VFW Project:1  
+	Jason Bentley
+	Term 1205 -->
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -12,11 +15,13 @@
 	</head>
 	<body>
 		<h1>Recipe Keeper</h1>
-		<form action="" method="post">
+		<form action="#" method="post">
 			<fieldset>
-				<legend>Recipe</legend>
+				<legend>Recipe Info</legend>
 				<ul>
-					<li><label for="recipename">Recipe Name:</label><input type="text" id="fname" /></li>
+					<li><label for="recipename">Recipe Name:</label><input type="text" id="recipename" /></li>
+					<li><label for="rating">Rate the Recipe</label><input type="range" min="0" max="10" step="1" id="rating"/></li>
+					<li><label for="date">Date Added</label><input name="day" type="date" id="date"></li>
 					<li><label for="type">Type of Dish</label>
 						<select id="type">
 							<option value="0" selected>Choose...</option>
@@ -25,16 +30,21 @@
 							<option value="pork">Pork</option>
 							<option value="veggie">Veggie</option>
 						</select></li>
-					<li>Meal Time</li>
+					<li>Meal Time
 						<ul>
 							<li><input type="checkbox" value="Appetizer" id="appetizer"/><label for="appetizer">Appetizer</label></li>
 							<li><input type="checkbox" value="Breakfast" id="breakfast"/><label for="breakfast">Breakfast</label></li>
 							<li><input type="checkbox" value="Lunch" id="lunch"/><label for="lunch">Lunch</label></li>
 							<li><input type="checkbox" value="Dinner" id="dinner"/><label for="dinner">Dinner</label></li>
 						</ul>
+					
+					<li><label for="directions">Directions:</label><textarea id="directions"></textarea></li>
+					<li><input type="hidden" value="true" /></li>
 				</ul>
 			</fieldset>
 			<input type="submit" value="Submit"/><br/>
-
+			<a href="#">Clear Stored Data</a>
+			<a href="#">Display Data</a>
+		</form>
 	</body>
 </html>
