@@ -73,6 +73,10 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.groups 	= ["Group:",$("groups").value];
 			item.rating		= ["Rating:", $("rating").value];
 			item.date		= ["Date Added:", $("date").value];
+			item.appetizer 	= ["Great as an " , $("appetizer").value];
+			item.breakfast 	= ["Great for ", $("breakfast").value];
+			item.lunch 		= ["Great for ", $("lunch").value];
+			item.dinner 	= ["Great for ", $("dinner").value];
 			item.directions = ["Directions:", $("directions").value];
 		//Save data into Local Storage: Use Stringify to convert the object to a string.
 		localStorage.setItem(id, JSON.stringify(item));
@@ -86,7 +90,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var makeList = document.createElement("ul");
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
-		$("items").style.display = "display";
+		$("items").style.display = "block";
 		for(var i=0, len=localStorage.length; i<len;i++){
 			var makeLi = document.createElement("li");
 			makeList.appendChild(makeLi);
