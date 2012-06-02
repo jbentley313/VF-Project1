@@ -29,15 +29,71 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect);
 	}
 
+	function getCheckboxValue(){
+		if($("appetizer").checked){
+			appetizerValue = $("appetizer").value;
+		}
+		if($("breakfast").checked){
+			breakfastValue = $("breakfast").value;
+		}
+		if($("lunch").checked){
+			lunchValue = $("lunch").value;
+		}
+		if($("dinner").checked){
+			dinnerValue = $("diner").value;
+		}
+	}
+	function storeData(){
+		var id 				= Math.floor(Math.random()*100000001);
+		//Get all of our form field value and store in an object.
+		//Object properties contain array with the form label and input values.
+		var item 			= {};
+			item.recipename	= ["Recipe Name:", $("recipename").value];
+			item.groups 	= ["Group:",$("groups").value];
+			item.rating		= ["Rating:", $("rating").value];
+			item.date		= ["Date Added:", $("date").value];
+			item.directions = ["Directions:", $("directions").value];
+		//Save data into Local Storage: Use Stringify to convert the object to a string.
+		localStorage.setItem(id, JSON.stringify(item));
+		alert("Recipe Saved!");
+
+	}
+	function getData(){
+		var makeDiv = document.createElement("div");
+		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement("ul");
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		for(var i=0, len=localStorage.length; i<len;i++){
+			var makeLi = document.createElement("li");
+			makeList.appendChild(makeLi);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var obj = JSON.parse(value);
+			var makeSublist = document.createElement("ul");
+			makeLi.appendChild(makeSublist);
+			for(var n in obj){
+				var makeSubli = document.createElement("li");
+				makeSublist.appendChild(makeSubli);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubli.innerHTML = optSubText;
+			}
+		}
+	}
 	//Variable Defaults
-	var mealType = [ "--Select--", "Chicken", "Beef", "Pork", "Veggie"];
+	var mealType = ["--Select--", "Chicken", "Beef", "Pork", "Veggie"],
+		appetizerValue,
+		breakfastValue,
+		lunchValue,
+		dinnerValue
 	makeCats();
+		
 
 	//Set Link and Submit Click Events
 	var displayLink = $("display");
 	displayLink.addEventListener("click", getData);
-	var clearLink = $("clear");
-	clearLink.addEventListener("click", clearLocal);
+	// var clearLink = $("clear");
+	// clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 
