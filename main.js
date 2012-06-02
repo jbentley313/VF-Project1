@@ -43,6 +43,27 @@ window.addEventListener("DOMContentLoaded", function(){
 			dinnerValue = $("diner").value;
 		}
 	}
+
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$("recipeForm").style.display = "none";
+				$("clear").style.display = "inline;"
+				$("display").style.display = "none";
+				$("addNew").style.display = "inline";
+				break;
+			case "off":
+				$("recipeForm").style.display = "block";
+				$("clear").style.display = "inline;"
+				$("display").style.display = "inline";
+				$("addNew").style.display = "none";
+				$("items").style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	}
+
 	function storeData(){
 		var id 				= Math.floor(Math.random()*100000001);
 		//Get all of our form field value and store in an object.
@@ -59,11 +80,13 @@ window.addEventListener("DOMContentLoaded", function(){
 
 	}
 	function getData(){
+		toggleControls("on");
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement("ul");
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
+		$("items").style.display = "display";
 		for(var i=0, len=localStorage.length; i<len;i++){
 			var makeLi = document.createElement("li");
 			makeList.appendChild(makeLi);
