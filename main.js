@@ -34,13 +34,10 @@ window.addEventListener("DOMContentLoaded", function(){
 			tcheckedBoxes = []
 		for(var i=0; i<checkBoxes.length; i++){
 			if(checkBoxes[i].checked){
-			 tries = " " + checkBoxes[i].value;
-			tcheckedBoxes.push(tries);
-
-			}
-			
+			 newSelected = " " + checkBoxes[i].value;
+			tcheckedBoxes.push(newSelected);
+			}	
 		}
-		
 	}
 
 	function toggleControls(n){
