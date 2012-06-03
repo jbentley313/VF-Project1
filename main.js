@@ -28,20 +28,19 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 		selectLi.appendChild(makeSelect);
 	}
+	
+	function getCheckboxValues(){
+		 	checkBoxes = document.forms[0].mealTime
+			tcheckedBoxes = []
+		for(var i=0; i<checkBoxes.length; i++){
+			if(checkBoxes[i].checked){
+			 tries = " " + checkBoxes[i].value;
+			tcheckedBoxes.push(tries);
 
-	function getCheckboxValue(){
-		if($("appetizer").checked){
-			appetizerValue = $("appetizer").value;
+			}
+			
 		}
-		if($("breakfast").checked){
-			breakfastValue = $("breakfast").value;
-		}
-		if($("lunch").checked){
-			lunchValue = $("lunch").value;
-		}
-		if($("dinner").checked){
-			dinnerValue = $("diner").value;
-		}
+		
 	}
 
 	function toggleControls(n){
@@ -66,18 +65,16 @@ window.addEventListener("DOMContentLoaded", function(){
 
 	function storeData(){
 		var id 				= Math.floor(Math.random()*100000001);
+		getCheckboxValues()
 		//Get all of our form field value and store in an object.
 		//Object properties contain array with the form label and input values.
 		var item 			= {};
 			item.recipename	= ["Recipe Name:", $("recipename").value];
-			item.groups 	= ["Group:",$("groups").value];
-			item.rating		= ["Rating:", $("rating").value];
-			item.date		= ["Date Added:", $("date").value];
-			item.appetizer 	= ["Great as an " , $("appetizer").value];
-			item.breakfast 	= ["Great for ", $("breakfast").value];
-			item.lunch 		= ["Great for ", $("lunch").value];
-			item.dinner 	= ["Great for ", $("dinner").value];
-			item.directions = ["Directions:", $("directions").value];
+			item.groups 	= ["Group: ",$("groups").value];
+			item.rating		= ["Rating: ", $("rating").value];
+			item.date		= ["Date Added: ", $("date").value];
+			item.checks 	= ["Meal Time: " , tcheckedBoxes];
+			item.directions = ["Directions: ", $("directions").value];
 		//Save data into Local Storage: Use Stringify to convert the object to a string.
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Recipe Saved!");
@@ -85,6 +82,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	function getData(){
 		toggleControls("on");
+		if(localStorage.length === 0){
+			alert("There are no recipes to display!");
+		}
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement("ul");
@@ -107,20 +107,28 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 	}
+
+	function clearLocal(){
+		if(localStorage.lenght === 0){
+			alert("There is no data to clear.")
+		}else{
+			localStorage.clear();
+			alert("All recipes are deleted!");
+			window.location.reload();
+			return false;
+		}
+	}
 	//Variable Defaults
 	var mealType = ["--Select--", "Chicken", "Beef", "Pork", "Veggie"],
-		appetizerValue,
-		breakfastValue,
-		lunchValue,
-		dinnerValue
+		tcheckedBoxes
+	;
 	makeCats();
-		
-
+	
 	//Set Link and Submit Click Events
 	var displayLink = $("display");
 	displayLink.addEventListener("click", getData);
-	// var clearLink = $("clear");
-	// clearLink.addEventListener("click", clearLocal);
+	var clearLink = $("clear");
+	clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 
