@@ -13,23 +13,30 @@
 		<title>Recipe Keeper</title>
 	</head>
 	<body>
+		
 		<h1>Recipe Keeper</h1>
+
 		<form action="#" method="post" id="recipeForm">
 			<fieldset>
 				<legend>Recipe Info</legend>
-				<ul>
+				<ul class="most">
 					<li><label for="recipename">Recipe Name:</label><input type="text" id="recipename" /></li>
 					<li><label for="rating">Rate the Recipe</label><input type="range" min="0" max="10" step="1" id="rating" /></li>
 					<li><label for="date">Date Added</label><input name="day" type="date" id="date"/></li>
 					<li id="select"><label for="type">Type of Dish</label></li>
+				
 					<li>Meal Time
+						
 						<ul>
-							<li><input type="checkbox" name="mealTime" value="appetizer"  id="appetizer"/><label for="appetizer">Appetizer</label></li>
-							<li><input type="checkbox" name="mealTime" value="breakfast"  id="breakfast"/><label for="breakfast">Breakfast</label></li>
-							<li><input type="checkbox" name="mealTime" value="lunch"  id="lunch"/><label for="lunch">Lunch</label></li>
-							<li><input type="checkbox" name="mealTime" value="dinner"  id="dinner"/><label for="dinner">Dinner</label></li>
+							<li><input type="checkbox" name="mealTime" value="appetizer"  id="appetizer"/><label class="meal" for="appetizer">Appetizer</label></li>
+							<li><input type="checkbox" name="mealTime" value="breakfast"  id="breakfast"/><label class="meal" for="breakfast">Breakfast</label></li>
+							<li><input type="checkbox" name="mealTime" value="lunch"  id="lunch"/><label class="meal" for="lunch">Lunch</label></li>
+							<li><input type="checkbox" name="mealTime" value="dinner"  id="dinner"/><label class="meal" for="dinner">Dinner</label></li>
+						
 						</ul>
-					
+						
+					</li>
+				
 					<li><label for="directions">Directions:</label><textarea id="directions"></textarea></li>
 				</ul>
 				<input type="hidden" value="true" />

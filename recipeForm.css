@@ -1,7 +1,29 @@
 
+label{
+	display: block;
+}
+
 h1 {
+	font-family: Arial, "MS Trebuchet", sans-serif;
 	padding: 15px;
 	border: 2px solid black;
-	background: #E0CE84;
+	background: #FFC973;	
+}
+
+a {
+ border: 2px solid black;
+ padding: 2px;
+ text-decoration: none;
+ background-color: #FFF;
+ }
+
+
+label {
+	font-family: Bold, "MS Trebuchet", sans-serif;
 	
+}
+
+.meal {
+
+	display: inline;
 }

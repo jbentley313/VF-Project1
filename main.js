@@ -30,8 +30,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	function getCheckboxValues(){
-		 	checkBoxes = document.forms[0].mealTime
-			tcheckedBoxes = []
+		 	var	checkBoxes = document.forms[0].mealTime;
+				tcheckedBoxes = [];
 		for(var i=0; i<checkBoxes.length; i++){
 			if(checkBoxes[i].checked){
 			 newSelected = " " + checkBoxes[i].value;
