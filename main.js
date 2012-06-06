@@ -46,13 +46,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		switch(n){
 			case "on":
 				$("recipeForm").style.display = "none";
-				$("clear").style.display = "inline;"
+				$("clear").style.display = "inline";
 				$("display").style.display = "none";
 				$("addNew").style.display = "inline";
 				break;
 			case "off":
 				$("recipeForm").style.display = "block";
-				$("clear").style.display = "inline;"
+				$("clear").style.display = "inline";
 				$("display").style.display = "inline";
 				$("addNew").style.display = "none";
 				$("items").style.display = "none";
