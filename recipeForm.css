@@ -1,3 +1,9 @@
+/*Jason Bentey
+VFW 1206 
+Project 2*/
+body{
+	background:#A67425;
+}
 
 label{
 	display: block;
@@ -5,25 +11,65 @@ label{
 
 h1 {
 	font-family: Arial, "MS Trebuchet", sans-serif;
-	padding: 15px;
-	border: 2px solid black;
+	padding: 8px;
+	border: 1px solid black;
 	background: #FFC973;	
 }
 
+h2 {
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	padding: 8px;
+	border: 1px solid black;
+	background: #FFE1B2;	
+}
+
 a {
- border: 2px solid black;
+ border: 1px solid black;
  padding: 2px;
  text-decoration: none;
- background-color: #FFF;
+ background-color: #BFA170;
  }
 
 
 label {
-	font-family: Bold, "MS Trebuchet", sans-serif;
-	
+	font-family:  Arial, "MS Trebuchet", sans-serif;
 }
 
 .meal {
-
 	display: inline;
+}
+
+.space {
+	font-style:bold;
+	margin-top:4px;
+	/*background:#FFE1B2;*/
+}
+
+ul {
+	list-style-type:square;
+	/*background:#FFE1B2;
+	margin-left:-12px;
+	margin-right:-8px;*/
+}
+
+.info {
+	background: #FFC973;
+	padding-top:6px;
+}
+
+#submit {
+	margin-bottom:20px;
+}
+
+span {
+	position: absolute;
+	font-style:bold;
+	font-family:  Arial, "MS Trebuchet", sans-serif;
+	padding-top:2px;
+}
+
+.nobox {
+list-style-type:none;
+margin-left:-30px;
+
 }

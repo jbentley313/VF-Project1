@@ -81,6 +81,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		toggleControls("on");
 		if(localStorage.length === 0){
 			alert("There are no recipes to display!");
+			window.location.reload();
 		}
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
