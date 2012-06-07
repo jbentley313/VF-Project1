@@ -109,7 +109,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 
 	function clearLocal(){
-		if(localStorage.lenght === 0){
+		if(localStorage.length === 0){
 			alert("There is no data to clear.")
 		}else{
 			localStorage.clear();
