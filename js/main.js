@@ -93,6 +93,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		$("items").style.display = "block";
 		for(var i=0, len=localStorage.length; i<len;i++){
 			var makeLi = document.createElement("li");
+			var linksLi= document.createElement("li");
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -104,8 +105,75 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSublist.appendChild(makeSubli);
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubli.innerHTML = optSubText;
+				makeSublist.appendChild(linksLi);
 			}
+			makeItemLinks(localStorage.key(i), linksLi); //Create edit and delete buttons for each item
 		}
+	}
+	//Make Item Links
+	//Create edit and delete links for eachstored item when disp
+	function makeItemLinks(key, linksLi){
+		var editLink = document.createElement("a");
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit Recipe";
+		editLink.addEventListener("click", editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+
+		//add line break
+		var breakTag = document.createElement("br");
+		linksLi.appendChild(breakTag);
+
+		//add delete single item link
+		var deleteLink = document.createElement("a");
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Recipe";
+		// deleteLink.addEventListener("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
+
+	}
+
+	function editItem(){
+		//grab data from item in l storage
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+
+		//Show form
+		toggleControls("off");
+
+		//Populate form fields w/current lstorage vals
+		$("groups").value = item.groups[1];
+		$("recipename").value = item.recipename[1];
+		$("rating").value = item.rating[1];
+		$("date").value = item.date[1];
+		$("directions").value = item.directions[1];
+		// var formChecks = document.forms[0].mealTime;
+			for(var i=0;i<item.checks.length; i++){
+		
+			if(item.checks[1] == " appetizer"){
+				$("appetizer").setAttribute("checked", "checked");
+			} 
+			// if(item.checks[1]  == " breakfast"){
+			// 	$("breakfast").setAttribute("checked", "checked");
+			// }
+		}
+			
+			
+			console.log(item);
+		
+		
+		
+		
+		// if(item.checks[1]==" appetizer"){
+		// 	$("appetizer").setAttribute("checked", "checked");
+		// }
+		// if(item.checks[2]==" breakfast"){
+		// 	$("breakfast").setAttribute("checked", "checked");
+		
+		
 	}
 
 	function clearLocal(){
