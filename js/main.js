@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				tcheckedBoxes = [];
 		for(var i=0; i<checkBoxes.length; i++){
 			if(checkBoxes[i].checked){
-			 newSelected = " " + checkBoxes[i].value;
+			 newSelected = checkBoxes[i].value;
 			tcheckedBoxes.push(newSelected);
 			}	
 		}
@@ -151,18 +151,25 @@ window.addEventListener("DOMContentLoaded", function(){
 		$("date").value = item.date[1];
 		$("directions").value = item.directions[1];
 		// var formChecks = document.forms[0].mealTime;
-			for(var i=0;i<item.checks.length; i++){
+		var placeValues = function(){
+			var checkboxes = document.forms[0].mealTime;
+			for(i=0, j=checkboxes.length; i<j; i++){
+				for(n=0, m=item.checks[1].length; n<m; n++){
+					if(checkboxes[i].value === item.checks[1][n]){
+						checkboxes[i].setAttribute("checked", "checked");
+					}
+				}
+			}
+			console.log(item.checks);//console log to make sure the correct items have been saved
+		};
+		placeValues();
 		
-			if(item.checks[1] == " appetizer"){
-				$("appetizer").setAttribute("checked", "checked");
-			} 
-			// if(item.checks[1]  == " breakfast"){
-			// 	$("breakfast").setAttribute("checked", "checked");
-			// }
-		}
+
+	};
 			
 			
-			console.log(item);
+			
+			
 		
 		
 		
@@ -174,7 +181,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		// 	$("breakfast").setAttribute("checked", "checked");
 		
 		
-	}
+	
 
 	function clearLocal(){
 		if(localStorage.length === 0){
@@ -189,6 +196,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Variable Defaults
 	var mealType = ["--Select--", "Chicken", "Beef", "Pork", "Veggie"],
 		tcheckedBoxes
+
 	;
 	makeCats();
 	
