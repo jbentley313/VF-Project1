@@ -26,11 +26,12 @@ h2 {
 nav {
 	padding-bottom:20px;
 }
+
 a {
  border: 1px solid black;
  padding: 2px;
  text-decoration: none;
- background-color: #BFA170;
+ /*background-color: #BFA170;*/
  }
 
 
@@ -50,7 +51,7 @@ label {
 }
 
 ul {
-	list-style-type:square;
+	list-style-type:none;
 	/*background:#FFE1B2;
 	margin-left:-12px;
 	margin-right:-8px;*/

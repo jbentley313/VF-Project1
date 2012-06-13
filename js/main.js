@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 		selectLi.appendChild(makeSelect);
 	}
-	
+
 	function getCheckboxValues(){
 		 	var	checkBoxes = document.forms[0].mealTime;
 				tcheckedBoxes = [];
@@ -62,8 +62,16 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 
-	function storeData(){
-		var id 				= Math.floor(Math.random()*100000001);
+	function storeData(key){
+		//if no key, means brand new item that needs a key
+		if(!key){
+			var id 			= Math.floor(Math.random()*100000001);
+		}else{
+			//set id to existing key we are editing to save OVER data
+			//the key is same key that's been passed along from editSubmit event handler
+			//to the validate function, then passed here, into storeData function
+			id = key;
+		}
 		getCheckboxValues()
 		//Get all of our form field value and store in an object.
 		//Object properties contain array with the form label and input values.
@@ -77,7 +85,6 @@ window.addEventListener("DOMContentLoaded", function(){
 		//Save data into Local Storage: Use Stringify to convert the object to a string.
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Recipe Saved!");
-
 	}
 	function getData(){
 		toggleControls("on");
@@ -130,7 +137,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Recipe";
-		// deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 
@@ -150,7 +157,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		$("rating").value = item.rating[1];
 		$("date").value = item.date[1];
 		$("directions").value = item.directions[1];
-		// var formChecks = document.forms[0].mealTime;
+		
 		var placeValues = function(){
 			var checkboxes = document.forms[0].mealTime;
 			for(i=0, j=checkboxes.length; i<j; i++){
@@ -160,28 +167,43 @@ window.addEventListener("DOMContentLoaded", function(){
 					}
 				}
 			}
-			console.log(item.checks);//console log to make sure the correct items have been saved
+			//console.log(item.checks);//console log to make sure the correct items have been saved
 		};
 		placeValues();
-		
+
+		//remove initial listener from the input 'save recipe' button
+		save.removeEventListener("click", storeData);
+		//Change submit button value to Edit Button
+		$("submit").value = "Edit Recipe";
+		var editSubmit = $("submit");
+		//save the key value estab in this func as a prpty of the editSubmit event
+		//so we can use that value when we save the data we edited.
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
 
 	};
-			
-			
-			
-			
+
+	function deleteItem(){
+		var ask = confirm("Are you sure you want to delete this recipe?");
+		if(ask){
+			localStorage.removeItem(this.key);
+			alert("Recipe was deleted!");
+			window.location.reload();
+		}else{
+			alert("Recipe was NOT deleted.");
+		}
+	}
+
+
+
+
+
+
+
+
 		
-		
-		
-		
-		// if(item.checks[1]==" appetizer"){
-		// 	$("appetizer").setAttribute("checked", "checked");
-		// }
-		// if(item.checks[2]==" breakfast"){
-		// 	$("breakfast").setAttribute("checked", "checked");
-		
-		
-	
+
+
 
 	function clearLocal(){
 		if(localStorage.length === 0){
@@ -193,21 +215,76 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
+
+	function validate(e){
+		//define elements we want to check
+		var getGroup = $("groups");
+		var getRecipeName = $("recipename");
+		var getDirections = $("directions");
+
+		//Reset Error Messages
+		errMsg.innerHTML = "";
+		getGroup.style.border ="1px solid black";
+		getRecipeName.style.border ="1px solid black";
+		getDirections.style.border ="1px solid black";
+
+
+		//Get error messages
+		var messageAry = [];
+		//group val
+		if(getGroup.value==="--Select--"){
+			var groupError = "Please choose a group.";
+			getGroup.style.border ="1px solid red";
+			messageAry.push(groupError);
+		}
+
+		//recipe name val
+		if(getRecipeName.value === ""){
+			var recipeNameError = "Please enter a recipe name."
+			getRecipeName.style.border ="1px solid red";
+			messageAry.push(recipeNameError);
+		}
+
+		//directions val
+		if(getDirections.value === ""){
+			var directionTxtsError = "Please enter the recipe directions.";
+			getDirections.style.border ="1px solid red";
+			messageAry.push(directionTxtsError);
+		}
+
+		//if errors present, then display them on the screen.
+		if(messageAry.length >= 1){
+			for(var i=0, j=messageAry.length; i < j; i++){
+				var txt = document.createElement("li");
+				txt.innerHTML = messageAry[i];
+				errMsg.appendChild(txt);
+			}
+			e.preventDefault();
+			return false;
+		}else{
+			//all good = then save the data
+			//send key value (from editData func)
+			storeData(this.key);
+		}
+
+	}
 	//Variable Defaults
 	var mealType = ["--Select--", "Chicken", "Beef", "Pork", "Veggie"],
-		tcheckedBoxes
+		tcheckedBoxes,
+		errMsg = $("errors");
 
 	;
 	makeCats();
-	
+
 	//Set Link and Submit Click Events
 	var displayLink = $("display");
 	displayLink.addEventListener("click", getData);
 	var clearLink = $("clear");
 	clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
-	save.addEventListener("click", storeData);
+	save.addEventListener("click", validate);
 
 
 
 });
+

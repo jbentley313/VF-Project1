@@ -26,6 +26,8 @@
 				<legend>
 					<span>Recipe Info</span>
 				</legend>
+				<ul id="errors"></ul> 
+
 				<ul>
 					<li class="space"><label for="recipename">Recipe Name:</label><input type="text" id="recipename" /></li>
 					<li class="space"><label for="rating">Rate the Recipe</label><input type="range" min="0" max="10" step="1" id="rating" /></li>
@@ -47,9 +49,10 @@
 					<li class="space"><label for="directions">Directions:</label><textarea id="directions"></textarea></li>
 				</ul>
 				<input type="hidden" value="true" />
-			<input type="submit" value="Submit" id="submit"/><br/>
+			<input type="submit" value="Save Recipe" id="submit"/><br/>
 			
 			</fieldset>
+			
 			
 		</form>
 		
