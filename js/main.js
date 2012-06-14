@@ -243,18 +243,19 @@ window.addEventListener("DOMContentLoaded", function(){
 
 		//Get error messages
 		var messageAry = [];
-		//group val
-		if(getGroup.value==="--Select--"){
-			var groupError = "Please choose a group.";
-			getGroup.style.border ="1px solid red";
-			messageAry.push(groupError);
-		}
 
 		//recipe name val
 		if(getRecipeName.value === ""){
 			var recipeNameError = "Please enter a recipe name."
 			getRecipeName.style.border ="1px solid red";
 			messageAry.push(recipeNameError);
+		}
+
+		//group val
+		if(getGroup.value==="--Select--"){
+			var groupError = "Please select type of dish.";
+			getGroup.style.border ="1px solid red";
+			messageAry.push(groupError);
 		}
 
 		//directions val
