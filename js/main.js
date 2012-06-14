@@ -190,7 +190,6 @@ window.addEventListener("DOMContentLoaded", function(){
 		//so we can use that value when we save the data we edited.
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = this.key;
-
 	};
 
 	function deleteItem(){
@@ -198,24 +197,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		if(ask){
 			localStorage.removeItem(this.key);
 			alert("Recipe was deleted!");
-			window.location.reload();
-			
+			window.location.reload();	
 		}else{
 			alert("Recipe was NOT deleted.");
-		}
-		
+		}		
 	}
-
-
-
-
-
-
-
-
-		
-
-
 
 	function clearLocal(){
 		if(localStorage.length === 0){
@@ -240,7 +226,6 @@ window.addEventListener("DOMContentLoaded", function(){
 		getRecipeName.style.border ="1px solid black";
 		getDirections.style.border ="1px solid black";
 
-
 		//Get error messages
 		var messageAry = [];
 
@@ -252,7 +237,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 
 		//group val
-		if(getGroup.value==="--Select--"){
+		if(getGroup.value === "--Select--"){
 			var groupError = "Please select type of dish.";
 			getGroup.style.border ="1px solid red";
 			messageAry.push(groupError);
@@ -281,12 +266,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 
 	}
+
 	//Variable Defaults
 	var mealType = ["--Select--", "Chicken", "Beef", "Pork", "Veggie"],
 		tcheckedBoxes,
-		errMsg = $("errors");
-
+		errMsg = $("errors")
 	;
+
 	makeCats();
 
 	//Set Link and Submit Click Events
