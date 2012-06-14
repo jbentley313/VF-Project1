@@ -95,12 +95,15 @@ window.addEventListener("DOMContentLoaded", function(){
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement("ul");
+
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
 		$("items").style.display = "block";
 		for(var i=0, len=localStorage.length; i<len;i++){
 			var makeLi = document.createElement("li");
+			makeLi.setAttribute("id", "ele");
 			var linksLi= document.createElement("li");
+			linksLi.setAttribute("id", "dL")
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -113,9 +116,13 @@ window.addEventListener("DOMContentLoaded", function(){
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubli.innerHTML = optSubText;
 				makeSublist.appendChild(linksLi);
+
 			}
+
 			makeItemLinks(localStorage.key(i), linksLi); //Create edit and delete buttons for each item
-		}
+
+		} 
+
 	}
 	//Make Item Links
 	//Create edit and delete links for eachstored item when disp
@@ -130,7 +137,9 @@ window.addEventListener("DOMContentLoaded", function(){
 
 		//add line break
 		var breakTag = document.createElement("br");
+		
 		linksLi.appendChild(breakTag);
+
 
 		//add delete single item link
 		var deleteLink = document.createElement("a");
@@ -140,6 +149,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
+
 
 	}
 
@@ -189,9 +199,11 @@ window.addEventListener("DOMContentLoaded", function(){
 			localStorage.removeItem(this.key);
 			alert("Recipe was deleted!");
 			window.location.reload();
+			
 		}else{
 			alert("Recipe was NOT deleted.");
 		}
+		
 	}
 
 
