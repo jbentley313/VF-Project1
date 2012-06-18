@@ -89,8 +89,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	function getData(){
 		toggleControls("on");
 		if(localStorage.length === 0){
-			alert("There are no recipes to display!");
-			window.location.reload();
+			alert("There are no recipes to display! Default Data has been populated!");
+			autoFillData();			
 		}
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
@@ -123,6 +123,16 @@ window.addEventListener("DOMContentLoaded", function(){
 
 		} 
 
+	}
+
+	//Auto Populate Local Storage
+	function autoFillData(){
+		//The actual JSON OBJECT data required is coming from json.js loaded from html page
+		//Store JSON OBJ to Local Storage
+		for(var n in json){
+			var id 			= Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
 	}
 	//Make Item Links
 	//Create edit and delete links for eachstored item when disp
