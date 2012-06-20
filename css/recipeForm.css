@@ -9,6 +9,8 @@ body{
 	font-style:bold;
 	border: 1px solid black;
 	background: #FFC973;
+	padding-left:5%;
+
 
 }
 
@@ -17,7 +19,9 @@ body{
 }*/
 
 #ele{
-	border:1px solid black; margin-right:20px;
+	border-bottom:1px solid black;
+	margin-left:-40px;
+	margin-right:20px;
 	margin-top:10px;
 
 
@@ -35,33 +39,47 @@ h1 {
 	font-family: Arial, "MS Trebuchet", sans-serif;
 	padding: 4px;
 	border: 1px solid black;
-	background: #FFC973;	
+	background: #FFC973;
+	text-align:center;	
 }
 
 h2 {
 	font-family: Arial, "MS Trebuchet", sans-serif;
+	text-align:center;
 	padding: 8px;
 	border: 1px solid black;
-	background: #FFE1B2;	
+	background: #FFE1B2;
+	margin-bottom:125px;
+
 }
 
 nav {
 	padding-bottom:20px;
 
+
 }
 
 a {
- 
  padding: 2px;
  margin-top:5px;
  text-decoration: none;
  background-color: #BFA170;
-
- 
+ color:black;
+ margin-right:20px;
  
  }
  
+body>a{
+	
+	font-size:30px;
+	text-align:center;
+	border:1px solid black;
+	color:#FFC973;
+	margin-left:20px;
+	padding:10px;
 
+	
+}
 
 label {
 	font-family:  Arial, "MS Trebuchet", sans-serif;
@@ -103,6 +121,8 @@ span {
 	
 	display:block;
 	border:solid gray; width:94px;
+
 }
+
 
 

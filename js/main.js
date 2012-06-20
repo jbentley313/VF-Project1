@@ -110,6 +110,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSublist = document.createElement("ul");
 			makeLi.appendChild(makeSublist);
+			getImage(obj.groups[1], makeSublist);
 			for(var n in obj){
 				var makeSubli = document.createElement("li");
 				makeSublist.appendChild(makeSubli);
@@ -120,11 +121,16 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 
 			makeItemLinks(localStorage.key(i), linksLi); //Create edit and delete buttons for each item
-
 		} 
-
 	}
-
+	//get image for catefory
+	function getImage(catName, makeSublist){
+		var imageLi = document.createElement("li");
+		makeSublist.appendChild(imageLi);
+		var newImg = document.createElement("img");
+		var setSrc = newImg.setAttribute("src", "images/"+ catName + ".png");
+		imageLi.appendChild(newImg);
+	}
 	//Auto Populate Local Storage
 	function autoFillData(){
 		//The actual JSON OBJECT data required is coming from json.js loaded from html page
