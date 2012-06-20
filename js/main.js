@@ -1,6 +1,6 @@
 //Jason Bentley
 //VFW 1206 
-//Project 2
+//Project 3
 
 //Wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
@@ -136,7 +136,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		//The actual JSON OBJECT data required is coming from json.js loaded from html page
 		//Store JSON OBJ to Local Storage
 		for(var n in json){
-			var id 			= Math.floor(Math.random()*100000001);
+			var id = Math.floor(Math.random()*100000001);
 			localStorage.setItem(id, JSON.stringify(json[n]));
 		}
 	}

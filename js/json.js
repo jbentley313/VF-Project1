@@ -1,3 +1,7 @@
+//Jason Bentley
+//VFW 1206 
+//Project 3
+
 var json = {
 	"Recipe1" : {
 		"recipename": ["Recipe Name: ", "Chicken Crescents"] ,
